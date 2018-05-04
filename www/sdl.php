@@ -1,9 +1,15 @@
 <?php
-	include('../include/lib_smarty.php');
+error_reporting(E_ERROR | E_PARSE);
+require_once "../vendor/autoload.php";
 
-	/**
-      * SDL endpoint
-      */
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/../include');
+$dotenv->load();
 
-	$smarty->display('page_sdl.txt');
-	exit;
+$smarty = new \Slack\GoSDL\Libraries\Smarty();
+
+/**
+ * SDL endpoint
+ */
+
+$smarty->getSmarty()->display('page_sdl.html');
+exit;
